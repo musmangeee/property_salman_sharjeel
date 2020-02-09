@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="page-heading">{{$total}} Properties in Pakistan</h1>
+                <h1 class="page-heading">{{count($rent)}} Properties in Pakistan</h1>
             </div>
             <div class="col-md-4">
                 <div class="breadCrumb"><a href="{{route('user.user_dashboard')}}">Home</a> / <span>Listing</span></div>
@@ -200,7 +200,7 @@
                                 <a href="listing.html" data-toggle="tooltip" data-placement="top" title="" class="listby active" data-original-title="Result by List View"><i class="fa fa-th-list" aria-hidden="true"></i></a> <a href="grid.html" data-toggle="tooltip" data-placement="top" title="" class="listby" data-original-title="Result by Gallery View"><i class="fa fa-th-large" aria-hidden="true"></i></a>
                             </div>
                       
-                            <div class="col-md-4"><span class="hmcount">showing 1 of {{count($property)}} Properties</span></div>
+                            <div class="col-md-4"><span class="hmcount">showing 1 of {{count($rent)}} Properties</span></div>
                             <div class="col-md-5">
                                 <div class="input-group">
                                     <select class="form-control">
@@ -216,7 +216,7 @@
                             </div> 
                         </div>
                     </div>
-                    @foreach ($property as $item)                        
+                    @foreach ($rent as $item)                        
                         <ul class="listinglist">
                             <li>
                                 <div class="row">
@@ -303,7 +303,7 @@
                     <div class="pagiWrap">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                                {{$property->links()}}
+                                {{$rent->links()}}
                             </ul>
                         </nav>
                     </div>

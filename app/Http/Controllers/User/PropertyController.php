@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\PropertyModel;
 use App\PropertyTypeModel;
 use App\UnitModel;
+use App\SavedPropertyModel;
 use Auth;
 use Session;
 use Image;
@@ -194,5 +195,33 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function savedProperty(){
+        $savedProperty = SavedPropertyModel::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+        // dd($savedProperty);
+        return view('pages.user.property.saved_property',compact('savedProperty'));
+    }
+    public function savedPropertyStore(Request $request){
+        // dd($request);
+        SavedPropertyModel::create([
+            'user_id' => Auth::user()->id,
+            'property_id' => $request->property_id,
+        ]);
+
+        Session::flash('success', 'Your property has been added in saved list successfully.');
+        return redirect()->back();
+    }
+
+    public function saleProperty(){
+        $sale = PropertyModel::where('listing_type', 1)->orderBy('created_at', 'desc')->paginate(5);
+
+        return view('pages.user.property.sale_property',compact('sale'));
+    }
+
+    public function rentProperty(){
+        $rent = PropertyModel::where('listing_type', 2)->orderBy('created_at', 'desc')->paginate(5);
+        
+        return view('pages.user.property.rent_property',compact('rent'));
     }
 }

@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', 'User\PagesController@userIndex')->name('/');
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
@@ -32,7 +31,10 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/contactUs', 'User\PagesController@contactUs')->name('contact_us');
     Route::get('/aboutUs', 'User\PagesController@aboutUs')->name('about_us');
     //Route for property
+    Route::get('property/rent', 'User\PropertyController@rentProperty')->name('property.rent');
+    Route::get('property/sale', 'User\PropertyController@saleProperty')->name('property.sale');
     Route::get('property/saved', 'User\PropertyController@savedProperty')->name('property.saved');
+    Route::post('property/saved', 'User\PropertyController@savedPropertyStore')->name('property.saved.store');
     Route::resource('property', 'User\PropertyController');
     //Route for agent
     Route::get('agent/listing', 'User\AgentController@viewListing')->name('agent_listing');

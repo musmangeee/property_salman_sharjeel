@@ -21,12 +21,12 @@
                   @endif
                 </li>
                 <li><a class="dropdown-item" href="{{route('user.property.create')}}">Add Property</a></li>
-                <li><a class="dropdown-item" href="#">Saved Properties</a></li>
-                {{-- <li><a class="dropdown-item" href="#">FAQ's</a></li>
+                <li><a class="dropdown-item" href="{{route('user.property.saved')}}">Saved Properties</a></li>
+                <!-- <li><a class="dropdown-item" href="#">FAQ's</a></li>
                 <li><a class="dropdown-item" href="#">Testimonials</a></li>
                 <li><a class="dropdown-item" href="#">Packages</a></li>
                 <li><a class="dropdown-item" href="#">Register</a></li>
-                <li><a class="dropdown-item" href="#">404 Error</a></li> --}}
+                <li><a class="dropdown-item" href="#">404 Error</a></li>  -->
                 <li><a class="dropdown-item" href="{{ route('user.user_logout') }}">Logout</a></li>
               </ul>
             @endguest
@@ -45,8 +45,8 @@
             <ul class="navbar-nav">
               <li class="nav-item"><a class="nav-link" href="{{route('/')}}">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#">Buy</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Sell</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">Rent</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{route('user.property.sale')}}">Sell</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{route('user.property.rent')}}">Rent</a></li>
               <li class="nav-item "><a class="nav-link" href="{{route('user.agent_listing')}}">Agents</a></li>
               <li class="nav-item "><a class="nav-link" href="{{route('user.property.index')}}">Property</a></li>
               <li class="nav-item"><a class="nav-link" href="{{route('user.about_us')}}">About Us</a></li>

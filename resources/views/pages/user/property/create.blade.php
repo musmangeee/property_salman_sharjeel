@@ -83,8 +83,9 @@
                     <div class="adprice">
                         <h5>Asking Price</h5>
                         <div class="frminbx">
+                            <div class="formrow" id="rent"> 
                             <h4>Rent Period *</h4>
-                            <div class="formrow"> <strong><span class="radiobtn">
+                            <strong><span class="radiobtn">
                                 <input type="radio" name="rent_period" value="1">
                                 <i class="checkmark"></i> Monthly</span></strong>
                                 <strong><span class="radiobtn">
@@ -94,7 +95,7 @@
                                 <input type="radio" name="rent_period" value="3">
                                 <i class="checkmark"></i> Annually</span> </strong>
                             </div>    
-                            <div class="formrow">
+                            <div class="formrow" id="amount">
                                 <div class="input-group"> <span class="input-group-addon">£</span>
                                 <input type="text" name="rent_amount" class="form-control" placeholder="Enter Price" data-parsley-trigger="keyup" data-parsley-required="true" data-parsley-type="integer">
                                 </div>
@@ -463,6 +464,29 @@
 @endsection
 @section('jsscript')
 <script type="text/javascript">
+
+// $(document).ready(function() {
+//     var radio = $('input[name="listing_type"]:checked').val();
+
+//     // var updateDay = $radio.val();
+//     // var id = $radio.attr('id');
+//     console.log(radio);
+// });
+$(document).ready(function() {
+    $('#rent').hide();
+    $('input[name="listing_type"]').change(function() {
+      // alert('ole');
+       if($(this).val() == 2){
+           $('#rent').show();
+           $('#amount').hide();
+       }else{
+        $('#rent').hide();
+        $('#amount').show();
+       }
+    });
+});
+
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();

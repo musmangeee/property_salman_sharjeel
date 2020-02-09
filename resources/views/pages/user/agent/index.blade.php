@@ -58,17 +58,6 @@
                         <input type="text" class="form-control" placeholder="Location">
                     </div>
                     <!-- Location end --> 
-                    
-                    <!-- Bedrooms -->
-                    <div class="searchsd">
-                        <h4 class="widget-title">Agent Type</h4>
-                        <select class="form-control">
-                            <option>All</option>
-                            <option>Featured</option>
-                            <option>Normal</option>
-                        </select>
-                    </div>
-                    <!-- Bedrooms end -->
             
                     <!-- button -->
                     <div class="searchnt">
@@ -88,7 +77,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <div class="mainimage"><a href="detail.html"><img src="{{URL::asset('property/images/no-image-user.jpg') }}" alt="" height="215px"></div>
+                                        <div class="mainimage"><a href="#"><img src="{{URL::asset('property/images/no-image-user.jpg') }}" alt="" height="215px"></div>
                                     </div>
                                     <div class="col-lg-9">
                                         <div class="listinner">
@@ -109,7 +98,34 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>   
+                            </li>
+                            
+                                                    <!-- Contact Us -->
+                            <div id="phonenumber" class="modal fade" role="dialog">
+                                <div class="modal-dialog"> 
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">                  
+                                        <h4 class="modal-title">Agent <b>{{$agent->name}} {{$agent->lname}}</b> Phone Number</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                    
+                                            <div class="formpanel">                     
+                                                <div class="formrow">                      
+                                                    @if ($agent->user_type == 1)   
+                                                        <input type="text" class="form-control" placeholder="Phone Number" value="{{$agent->contact_no}}" readonly>                       
+                                                    @else
+                                                        <input type="text" class="form-control" placeholder="Phone Number" value="{{$agent->b_contact_no}}" readonly>                       
+                                                    @endif
+                                                </div>
+                                                <p>Next, once you are logged in, you can provide a few more details and conditions of offer.</p>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </ul>
             
