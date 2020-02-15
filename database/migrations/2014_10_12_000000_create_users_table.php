@@ -32,6 +32,17 @@ class CreateUsersTable extends Migration
             $table->string('b_address3')->nullable();
             $table->string('b_post_code')->nullable();
             $table->string('b_country')->nullable();
+            $table->string('city')->nullable();
+            $table->string('title')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('landline_no')->nullable();
+            $table->string('whatsapp_no')->nullable();
+            $table->string('skype_id')->nullable();
+            $table->string('website')->nullable();
+            $table->string('state')->nullable();
+            $table->integer('count')->nullable();
+            $table->string('area_town')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

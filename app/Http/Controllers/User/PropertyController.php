@@ -203,14 +203,25 @@ class PropertyController extends Controller
         return view('pages.user.property.saved_property',compact('savedProperty'));
     }
     public function savedPropertyStore(Request $request){
-        // dd($request);
-        SavedPropertyModel::create([
-            'user_id' => Auth::user()->id,
-            'property_id' => $request->property_id,
+        
+        $validator = validator::make($request->all(), [
+
+            'property_id' => 'required|unique:saved_property_models,property_id',
         ]);
 
-        Session::flash('success', 'Your property has been added in saved list successfully.');
-        return redirect()->back();
+        $saveProperty = new SavedPropertyModel();
+
+        $saveProperty->user_id = Auth::user()->id;
+        $saveProperty->property_id =  $request->property_id;
+        
+        if($validator->passes()){
+            $saveProperty->save();
+            Session::flash('success', 'Your property has been added in favourite list successfully.');
+            return redirect()->back();
+        }else{
+            Session::flash('error', 'This property is already in your favourite list.');
+            return redirect()->back();
+        }
     }
 
     public function saleProperty(){
@@ -224,4 +235,36 @@ class PropertyController extends Controller
         
         return view('pages.user.property.rent_property',compact('rent'));
     }
+
+    public function myProperty($id){
+
+        $myProperty = PropertyModel::where('created_by', $id)->paginate(5);
+    
+        return view('pages.user.property.my_property', compact('myProperty'));
+    }
+
+    public function expireProperty($id){
+
+        $expireProperty = PropertyModel::where('created_by', $id)->paginate(5);
+    
+        return view('pages.user.property.expire_property', compact('expireProperty'));
+    }
+
+
+
+    public function myAgentProperty($id){
+
+        $myProperty = PropertyModel::where('created_by', $id)->paginate(5);
+    
+        return view('pages.user.agent_property.my_property', compact('myProperty'));
+    }
+
+    public function expireAgentProperty($id){
+
+        $expireProperty = PropertyModel::where('created_by', $id)->paginate(5);
+    
+        return view('pages.user.agent_property.expire_property', compact('expireProperty'));
+    }
+
+
 }

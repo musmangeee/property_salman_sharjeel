@@ -21,7 +21,7 @@ class CreatePropertyModelsTable extends Migration
             $table->integer('property_type_id')->nullable();
 
             $table->string('rent_period')->nullable();
-            $table->integer('rent_maount')->nullable();
+            $table->integer('rent_amount')->nullable();
             
             $table->string('country')->nullable();
             $table->string('post_code')->nullable();

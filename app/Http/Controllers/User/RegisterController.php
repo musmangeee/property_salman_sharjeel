@@ -23,12 +23,12 @@ class RegisterController extends Controller
         // $sid = Auth::guard('procurementofficer')->user()->id;
         $user = new User;
         $data = $request->all();
+        // dd($data);
         $validator = validator::make($request->all(), [
         'name' => 'required|string|min:3',
         'email' => 'required|unique:users,email',
         'password' => 'required|min:6',
         ]);
-        // dd($data);
 
         if($data['user_type'] == 1){
             $user->name = $data['name'];

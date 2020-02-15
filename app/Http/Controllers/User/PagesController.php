@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\PropertyModel;
 
 class PagesController extends Controller
 {
@@ -14,7 +15,8 @@ class PagesController extends Controller
 
     public function userIndex()
     {
-        return view('pages.user.index');
+        $FeaturedProperties = PropertyModel::where('status', 1)->get();
+        return view('pages.user.index', compact('FeaturedProperties'));
     }
 
 

@@ -20,8 +20,8 @@
     <div class="section">
         <div class="container">     
             <div class="col-md-12">
-                @if(Session::has('message'))
-                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                @if(Session::has('success'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
                 @endif
                 @if(Session::has('error'))
                     <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('error') }}</p>

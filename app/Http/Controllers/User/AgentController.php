@@ -20,6 +20,10 @@ class AgentController extends Controller
     public function listingDetail($id){
 
         $user = User::where('id', $id)->first();
+        $GetCount = $user->count;
+        User::where('id', $id)->update([
+            'count' => $GetCount+1,
+        ]);
         $detail = PropertyModel::where('created_by', $id)->get();
         return view('pages.user.agent.detail', compact('detail', 'user'));
     }

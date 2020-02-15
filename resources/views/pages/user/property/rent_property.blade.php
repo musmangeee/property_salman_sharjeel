@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-      
+
           
           <!--Listing Block-->
 <div class="searchlisting">
@@ -272,31 +272,31 @@
                         </ul>
 
                         <!-- Contact Us -->
-<div id="phonenumber" class="modal fade" role="dialog">
-    <div class="modal-dialog"> 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">                  
-            <h4 class="modal-title">Agent <b>{{$item->User->name}} {{$item->User->lname}}</b> Phone Number</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-        
-                <div class="formpanel">                     
-                    <div class="formrow">                      
-                        @if ($item->User->user_type == 1)   
-                            <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->contact_no}}" readonly>                       
-                        @else
-                            <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->b_contact_no}}" readonly>                       
-                        @endif
-                    </div>
-                    <p>Next, once you are logged in, you can provide a few more details and conditions of offer.</p>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div id="phonenumber" class="modal fade" role="dialog">
+                            <div class="modal-dialog"> 
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">                  
+                                    <h4 class="modal-title">Agent <b>{{$item->User->name}} {{$item->User->lname}}</b> Phone Number</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                
+                                        <div class="formpanel">                     
+                                            <div class="formrow">                      
+                                                @if ($item->User->user_type == 1)   
+                                                    <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->contact_no}}" readonly>                       
+                                                @else
+                                                    <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->b_contact_no}}" readonly>                       
+                                                @endif
+                                            </div>
+                                            <p>Next, once you are logged in, you can provide a few more details and conditions of offer.</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                     
                     <!--Pagination-->

@@ -21,7 +21,7 @@
                   @endif
                 </li>
                 <li><a class="dropdown-item" href="{{route('user.property.create')}}">Add Property</a></li>
-                <li><a class="dropdown-item" href="{{route('user.property.saved')}}">Saved Properties</a></li>
+                {{-- <li><a class="dropdown-item" href="">Saved Properties</a></li> --}}
                 <!-- <li><a class="dropdown-item" href="#">FAQ's</a></li>
                 <li><a class="dropdown-item" href="#">Testimonials</a></li>
                 <li><a class="dropdown-item" href="#">Packages</a></li>

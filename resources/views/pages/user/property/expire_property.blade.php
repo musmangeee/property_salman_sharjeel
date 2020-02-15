@@ -6,10 +6,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <h1 class="page-heading">{{count($savedProperty)}} Saved Properties</h1>
+        <h1 class="page-heading">{{count($expireProperty)}} Expire Properties</h1>
       </div>
       <div class="col-md-4">
-        <div class="breadCrumb"><a href="{{route('/')}}">Home</a> / <span>Saved Properties</span></div>
+        <div class="breadCrumb"><a href="{{route('/')}}">Home</a> / <span>Expire Properties</span></div>
       </div>
     </div>
   </div>
@@ -38,13 +38,12 @@
 			
 			<div class="statepgdt">
                 {{-- <h2 class="maintitle">Your Recent Properties</h2> --}}
-                @if(count($savedProperty) > 0)  
-                    @foreach ($savedProperty as $item)                        
+                  @foreach ($expireProperty as $item)                        
                         <ul class="listinglist">
                             <li>
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        @if ($item->Property->featured_property == 1)
+                                        @if ($item->featured_property == 1)
                                             <div class="ribbon_3 popular"><span>Featured</span></div>
                                         @endif
                                         <div class="mainimage"><a href="#">
@@ -56,7 +55,7 @@
                                             {{-- <div class="imgcounter"> <span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span> <span><i class="fa fa-video-camera" aria-hidden="true"></i> 1</span></div> --}}
                                             <form action="{{route('user.property.saved.store')}}" method="post">
                                             @csrf
-                                                <input type="hidden" name="property_id" value="{{$item->Property->id}}">
+                                                <input type="hidden" name="property_id" value="{{$item->id}}">
                                                 <button class="favico slct" data-toggle="tooltip" data-placement="top" title="Save Property"><i class="fa fa-heart-o" style="color:black; font-weight:bold" aria-hidden="true"></i></button>
                                             </form>
                                              
@@ -64,8 +63,8 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="listinner">
-                                            <h2><a href="{{route('user.property.show', $item->Property->id)}}">{{$item->Property->bed}} bed <b>{{$item->Property->propertyType->name}}</b> house for sale</a></h2>
-                                            <div class="price">{{number_format($item->Property->rent_amount)}} Rs.</div>
+                                            <h2><a href="{{route('user.property.show', $item->id)}}">{{$item->bed}} bed <b>{{$item->propertyType->name}}</b> house for sale</a></h2>
+                                            <div class="price">{{number_format($item->rent_amount)}} Rs.</div>
                                             <ul class="options">
                                                 <li>
                                                 <div class="into" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>{{$item->bed}}</strong> </div>
@@ -77,15 +76,15 @@
                                                 <div class="into" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>{{$item->parking_no}}</strong> </div>
                                                 </li>
                                                 <li>
-                                                <div class="into" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>{{$item->property_size}}{{$item->Property->Unit->name}}</strong> </div>
+                                                <div class="into" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>{{$item->property_size}}{{$item->Unit->name}}</strong> </div>
                                                 </li>
                                             </ul>  
                                             <div class="whatinside">
-                                                <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="">{{$item->Property->street}}, {{$item->Property->area_town_city}}, Pakistan</a>
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="">{{$item->street}}, {{$item->area_town_city}}, Pakistan</a>
                                             </div>
-                                        <div class="postedon">Listed on {{$item->Property->created_at->format('d-M-Y')}} by <a href="{{route('user.agent_listing_detail', $item->User->id)}}">{{$item->User->name}} {{$item->User->lname}}</a></div>
+                                        <div class="postedon">Listed on {{$item->created_at->format('d-M-Y')}} by <a href="{{route('user.agent_listing_detail', $item->User->id)}}">{{$item->User->name}} {{$item->User->lname}}</a></div>
 
-                                            <div class="viiewoptions"><a href="{{route('user.property.show', $item->Property->id)}}"><i class="fa fa-external-link-square"></i> View Details</a>  <a href="#." class="phone" data-toggle="modal" data-target="#phonenumber" aria-hidden="true"><i class="fa fa-phone"></i> Show Number</a> </div>
+                                            <div class="viiewoptions"><a href="{{route('user.property.show', $item->id)}}"><i class="fa fa-external-link-square"></i> View Details</a>  <a href="#." class="phone" data-toggle="modal" data-target="#phonenumber" aria-hidden="true"><i class="fa fa-phone"></i> Show Number</a> </div>
                                 
                                             <div class="clearfix"></div>
                                         </div>
@@ -121,14 +120,11 @@
                             </div>
                         </div>
                     @endforeach
-                    @else
-                        <h3>No Saved Properties Available.</h3>
-                    @endif
                      <!--Pagination-->
                     <div class="pagiWrap">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                                {{$savedProperty->links()}}
+                                {{$expireProperty->links()}}
                             </ul>
                         </nav>
                     </div>

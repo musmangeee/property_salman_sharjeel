@@ -13,10 +13,17 @@ class SavedPropertyModel extends Model
 
     ];
 
-    public  function User(){
-        return $this->belongsTo('App\User','created_by');
+    
+    public  function propertyType(){
+        return $this->belongsTo('App\PropertyTypeModel','property_type_id');
     }
-    public function Propertry(){
+    public  function Unit(){
+        return $this->belongsTo('App\UnitModel','unit');
+    }
+    public  function User(){
+        return $this->belongsTo('App\User','user_id');
+    }
+    public  function Property(){
         return $this->belongsTo('App\PropertyModel','property_id');
     }
 }

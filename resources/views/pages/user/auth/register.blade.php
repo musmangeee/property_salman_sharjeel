@@ -105,7 +105,9 @@
 
                           {{-- Register Form For Agent --}}
                     
-                      <div id="business" class="formpanel tab-pane fade">
+                      
+                </div>
+                <div id="business" class="formpanel tab-pane fade">
                         <form method="POST" action="{{ route('user.user_register') }}" data-parsley-validate>
                           @csrf
                           <input type="hidden" name="user_type" value="2">
@@ -244,7 +246,6 @@
                           </button>
                         </form>  
                       </div>....
-                </div>
                 <div class="newuser"><i class="fa fa-user" aria-hidden="true"></i> Already a Member? <a href="{{route('login')}}">Login Here</a></div>
               </div>
             </div>
