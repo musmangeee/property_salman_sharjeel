@@ -20,4 +20,5 @@
     <!-- parsley -->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/parsley.css') }}">
 
+    @yield('style')
 </head>

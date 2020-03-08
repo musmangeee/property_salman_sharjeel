@@ -1032,7 +1032,7 @@
                     @endif
                   </div>
                 </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
+                {{-- <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div> --}}
               </div>
               <div class="back">
                 <div class="inner">
@@ -1106,296 +1106,65 @@
       <!-- title end -->
       
       <ul class="row itemgrid">
+        @foreach($RecentProperties as $property)
         <li class="col-lg-3">
           <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
             <div class="flipper">
               <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/01.jpg') }}" alt="" /></span>
                 <div class="frontinfo">
-                  <div class="ptype">House For Sale</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
+                  <div class="ptype">{{$property->propertyType->name}} For 
+                    @if($property->listing_type == 1)
+                    Sale
+                    @else
+                    Rent
+                    @endif
+                  </div>
+                  <h3>{{$property->street}}, {{$property->area_town_city}}, Pakistan</h3>
+                  <div class="price">
+                    @if($property->listing_type == 1)
+                      {{$property->rent_amount}}
+                    @else
+                      {{$property->ground_rent}}
+                    @endif
                 </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
+                </div>
+                {{-- <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div> --}}
               </div>
               <div class="back">
                 <div class="inner">
-                  <div class="back-title"><a href="#">House For Sale</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
+                  <div class="back-title"><a href="#">{{$property->propertyType->name}} For 
+                    @if($property->listing_type == 1)
+                    Sale
+                    @else
+                    Rent
+                    @endif
+                  </a></div>
+                  <div class="address">{{$property->street}}, {{$property->area_town_city}}, Pakistan
+                  </div>
+                 
                   <ul class="options">
                     <li>
-                      <div class="into" data-toggle="tooltip" data-placement="top" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
+                      <div class="into" data-toggle="tooltip" data-placement="top" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>{{$property->bed}}</strong> </div>
                     </li>
                     <li>
-                      <div class="into" data-toggle="tooltip" data-placement="top" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
+                      <div class="into" data-toggle="tooltip" data-placement="top" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>{{$property->bath}}</strong> </div>
                     </li>
                     <li>
-                      <div class="into" data-toggle="tooltip" data-placement="top" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
+                      <div class="into" data-toggle="tooltip" data-placement="top" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>{{$property->parking_no}}</strong> </div>
                     </li>
                     <li>
-                      <div class="into" data-toggle="tooltip" data-placement="top" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
+                      <div class="into" data-toggle="tooltip" data-placement="top" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>{{$property->property_size}}{{$property->Unit->name}}</strong> </div>
                     </li>
                   </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
+                  <div class="viewdetmt"> <a href="{{route('user.property.show', $property->id)}}" class="viewlink">View Detail</a> </div>
                 </div>
               </div>
             </div>
           </div>
         </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/02.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">House For Sale</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Sale</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/03.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">House For Rent</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Rent</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/04.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">House For Rent</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Rent</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/05.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">Room For Rent</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Sale</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/06.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">House For Rent</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Rent</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/07.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">Room For Rent</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Sale</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="col-lg-3">
-          <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-            <div class="flipper">
-              <div class="front"> <span class="imgbox"><img src="{{ URL::asset('property/images/property/08.jpg') }}" alt="" /></span>
-                <div class="frontinfo">
-                  <div class="ptype">Room For Rent</div>
-                  <h3>1350 Michael Lane GA</h3>
-                  <div class="price">$699,00</div>
-                </div>
-                <div class="imgcounter"><span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span></div>
-              </div>
-              <div class="back">
-                <div class="inner">
-                  <div class="back-title"><a href="#">House For Sale</a></div>
-                  <div class="address">34 Fort Collins, Colorado 80523, USA</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra nisl nulla...</p>
-                  <ul class="options">
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bedrooms" data-original-title="Bedrooms"> <i class="fa fa-bed" aria-hidden="true"></i> <strong>6</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Bathrooms" data-original-title="Bathrooms"> <i class="fa fa-bath" aria-hidden="true"></i> <strong>4</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Garage" data-original-title="Garage"> <i class="fa fa-car" aria-hidden="true"></i> <strong>1</strong> </div>
-                    </li>
-                    <li>
-                      <div class="into" data-toggle="tooltip" data-placement="bottom" title="Area" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>54m</strong> </div>
-                    </li>
-                  </ul>
-                  <div class="viewdetmt"> <a href="#" class="viewlink">View Detail</a> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
+        @endforeach
       </ul>
-      <div class="viewallbtn"><a href="#">View All Latest Properties</a></div>
+      <div class="viewallbtn"><a href="{{route('user.property.index')}}">View All Latest Properties</a></div>
     </div>
   </section>
   
@@ -1612,12 +1381,12 @@
         <div class="col-md-3 col-sm-3 col-xs-12 counter-item">
           <div class="counterbox">
             <div class="counter-icon"><i class="fa fa-users" aria-hidden="true"></i></div>
-            <span class="counter-text">For Sale Listings</span> <span class="counter-number" data-from="1" data-to="999" data-speed="1000"></span> </div>
+            <span class="counter-text">For Sale Listings</span> <span class="counter-number" data-from="1" data-to="{{$sale}}" data-speed="1000"></span> </div>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12 counter-item">
           <div class="counterbox">
             <div class="counter-icon"><i class="fa fa-university" aria-hidden="true"></i></div>
-            <span class="counter-text">To Rent Listing</span> <span class="counter-number" data-from="1" data-to="1512" data-speed="2000"></span> </div>
+            <span class="counter-text">To Rent Listing</span> <span class="counter-number" data-from="1" data-to="{{$rent}}" data-speed="2000"></span> </div>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12 counter-item">
           <div class="counterbox">

@@ -15,8 +15,12 @@ class PagesController extends Controller
 
     public function userIndex()
     {
-        $FeaturedProperties = PropertyModel::where('status', 1)->get();
-        return view('pages.user.index', compact('FeaturedProperties'));
+        $FeaturedProperties = PropertyModel::where('featured_property', 1)->limit(6)->get();
+        // dd($FeaturedProperties);
+        $RecentProperties = PropertyModel::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
+        $sale = PropertyModel::where('listing_type', 1)->count();
+        $rent = PropertyModel::where('listing_type', 2)->count();
+        return view('pages.user.index', compact('FeaturedProperties', 'RecentProperties', 'sale', 'rent'));
     }
 
 

@@ -1,6 +1,6 @@
  <!--Jquery--> 
-<script src="{{ URL::asset('property/js/jquery-3.2.1.js') }}"></script> 
-
+<script src="{{ URL::asset('property/js/jquery-3.2.1.js') }}"></script>
+ @yield('script')
 <!--Popper--> 
 <script src="{{ URL::asset('property/js/popper.min.js') }}"></script> 
 

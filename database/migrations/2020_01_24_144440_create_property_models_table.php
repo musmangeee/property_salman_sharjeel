@@ -41,7 +41,7 @@ class CreatePropertyModelsTable extends Migration
             $table->string('ground_rent')->nullable();
             $table->string('property_size')->nullable();
             $table->string('unit')->nullable();
-            $table->date('lease_expiry_date')->nullable();
+            $table->string('lease_expiry_date')->nullable();
             $table->string('epc_rating')->nullable();
             $table->string('local_autority')->nullable();
             $table->string('parking_no')->nullable();

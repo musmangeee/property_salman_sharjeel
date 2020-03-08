@@ -14,14 +14,14 @@
         </div>
     </div>
 </div>
-      
-          
+
+
           <!--Listing Block-->
 <div class="searchlisting">
     <div class="container">
        <div class="row">
             <div class="col-lg-3">
-                <div class="sidebar"> 
+                <div class="sidebar">
                     <!-- By Keyword -->
                     <div class="searchsd search">
                         <h4 class="widget-title">Search By Keyword</h4>
@@ -32,7 +32,7 @@
                             </span>
                         </div>
                     </div>
-                
+
                     <!-- Purpose -->
                     <div class="searchsd">
                         <h4 class="widget-title">Purpose</h4>
@@ -63,8 +63,8 @@
                             <option>Atlanta</option>
                         </select>
                     </div>
-                    <!-- State end --> 
-                        
+                    <!-- State end -->
+
                     <!-- City -->
                     <div class="searchsd">
                         <h4 class="widget-title">Choose City</h4>
@@ -73,8 +73,8 @@
                             <option>Atlanta</option>
                         </select>
                     </div>
-                    <!-- City end --> 
-                
+                    <!-- City end -->
+
                     <!-- Location -->
                     <div class="searchsd">
                         <h4 class="widget-title">Location</h4>
@@ -83,8 +83,8 @@
                             <option>New Town</option>
                         </select>
                     </div>
-                    <!-- Location end --> 
-              
+                    <!-- Location end -->
+
                     <!-- Area -->
                     <div class="searchsd">
                         <h4 class="widget-title">Area</h4>
@@ -101,8 +101,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Area end --> 
-                
+                    <!-- Area end -->
+
                     <!-- Price -->
                     <div class="searchsd">
                         <h4 class="widget-title">Price Range</h4>
@@ -119,8 +119,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Price end --> 
-                
+                    <!-- Price end -->
+
                     <!-- Bedrooms -->
                     <div class="searchsd">
                         <h4 class="widget-title">Bedrooms</h4>
@@ -132,8 +132,8 @@
                             <option>4</option>
                         </select>
                     </div>
-                    <!-- Bedrooms end --> 
-                    
+                    <!-- Bedrooms end -->
+
                     <!-- Bathrooms -->
                     <div class="searchsd">
                         <h4 class="widget-title">Bathrooms</h4>
@@ -145,8 +145,8 @@
                             <option>4</option>
                         </select>
                     </div>
-                    <!-- Bathrooms end --> 
-                    
+                    <!-- Bathrooms end -->
+
                     <!-- Features -->
                     <div class="searchsd">
                         <h4 class="widget-title">Features</h4>
@@ -164,8 +164,8 @@
                             <option>Auction Property</option>
                         </select>
                     </div>
-                    <!-- Features end --> 
-                        
+                    <!-- Features end -->
+
                     <!-- Portion -->
                     <div class="searchsd">
                         <h4 class="widget-title">Portion</h4>
@@ -175,31 +175,31 @@
                             <option>Ground Portion</option>
                         </select>
                     </div>
-                    <!-- Portion end --> 
-                    
+                    <!-- Portion end -->
+
                     <!-- button -->
                     <div class="searchnt">
                         <button class="btn"><i class="fa fa-search" aria-hidden="true"></i> Update Results</button>
                     </div>
-                    <!-- button end--> 
+                    <!-- button end-->
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="listingwraper">
-                    
+
                         @if(Session::has('success'))
                             <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('success') }}</p>
                         @endif
                         @if(Session::has('error'))
                             <p class="alert {{ Session::get('alert-class', 'alert-danger') }}">{{ Session::get('error') }}</p>
                         @endif
-                    
+
                     <div class="sortbybar">
                         <div class="row">
                             <div class="col-md-3">
                                 <a href="listing.html" data-toggle="tooltip" data-placement="top" title="" class="listby active" data-original-title="Result by List View"><i class="fa fa-th-list" aria-hidden="true"></i></a> <a href="grid.html" data-toggle="tooltip" data-placement="top" title="" class="listby" data-original-title="Result by Gallery View"><i class="fa fa-th-large" aria-hidden="true"></i></a>
                             </div>
-                      
+
                             <div class="col-md-4"><span class="hmcount">showing 1 of {{count($property)}} Properties</span></div>
                             <div class="col-md-5">
                                 <div class="input-group">
@@ -211,12 +211,12 @@
                                     <option>Price: Reduced</option>
                                     <option>Listed: Newest First</option>
                                     <option>Listed: Oldest First</option>
-                                    </select>                 
+                                    </select>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                    @foreach ($property as $item)                        
+                    @foreach ($property as $item)
                         <ul class="listinglist">
                             <li>
                                 <div class="row">
@@ -225,10 +225,10 @@
                                             <div class="ribbon_3 popular"><span>Featured</span></div>
                                         @endif
                                         <div class="mainimage"><a href="#">
-                                            @if($item->images == "")
+                                            @if($item->image == "")
                                                 <img src="{{ asset('property/images/' . 'no-image.jpg') }}" height="235px">
                                             @else
-                                                <img src="{{ asset('property/images/' . $item->images) }}">
+                                                <img src="{{ asset('../storage/app/public') . '/' . $item->image[0]->name  }}">
                                             @endif
                                             {{-- <div class="imgcounter"> <span><i class="fa fa-picture-o" aria-hidden="true"></i> 10</span> <span><i class="fa fa-video-camera" aria-hidden="true"></i> 1</span></div> --}}
                                             <form action="{{route('user.property.saved.store')}}" method="post">
@@ -236,7 +236,7 @@
                                                 <input type="hidden" name="property_id" value="{{$item->id}}">
                                                 <button class="favico slct" data-toggle="tooltip" data-placement="top" title="Save Property"><i class="fa fa-heart-o" style="color:black; font-weight:bold" aria-hidden="true"></i></button>
                                             </form>
-                                             
+
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
@@ -256,14 +256,14 @@
                                                 <li>
                                                 <div class="into" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Area"> <i class="fa fa-clone" aria-hidden="true"></i> <strong>{{$item->property_size}}{{$item->Unit->name}}</strong> </div>
                                                 </li>
-                                            </ul>  
+                                            </ul>
                                             <div class="whatinside">
                                                 <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="">{{$item->street}}, {{$item->area_town_city}}, Pakistan</a>
                                             </div>
                                         <div class="postedon">Listed on {{$item->created_at->format('d-M-Y')}} by <a href="{{route('user.agent_listing_detail', $item->User->id)}}">{{$item->User->name}} {{$item->User->lname}}</a></div>
 
                                             <div class="viiewoptions"><a href="{{route('user.property.show', $item->id)}}"><i class="fa fa-external-link-square"></i> View Details</a>  <a href="#." class="phone" data-toggle="modal" data-target="#phonenumber" aria-hidden="true"><i class="fa fa-phone"></i> Show Number</a> </div>
-                                
+
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -273,32 +273,32 @@
 
                         <!-- Contact Us -->
 <div id="phonenumber" class="modal fade" role="dialog">
-    <div class="modal-dialog"> 
+    <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header">                  
+            <div class="modal-header">
             <h4 class="modal-title">Agent <b>{{$item->User->name}} {{$item->User->lname}}</b> Phone Number</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-        
-                <div class="formpanel">                     
-                    <div class="formrow">                      
-                        @if ($item->User->user_type == 1)   
-                            <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->contact_no}}" readonly>                       
+
+                <div class="formpanel">
+                    <div class="formrow">
+                        @if ($item->User->user_type == 1)
+                            <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->contact_no}}" readonly>
                         @else
-                            <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->b_contact_no}}" readonly>                       
+                            <input type="text" class="form-control" placeholder="Phone Number" value="{{$item->User->b_contact_no}}" readonly>
                         @endif
                     </div>
                     <p>Next, once you are logged in, you can provide a few more details and conditions of offer.</p>
-                    
+
                 </div>
             </div>
         </div>
     </div>
 </div>
                     @endforeach
-                    
+
                     <!--Pagination-->
                     <div class="pagiWrap">
                         <nav aria-label="Page navigation example">
@@ -308,19 +308,19 @@
                         </nav>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 </div>
 
 
         <!--/Listing Block-->
-          
+
           <div class="largebanner shadow3">
       <div class="adin">
       <img src="images/google-ad-wide.jpg" alt="">
       </div>
       <div class="clearfix"></div>
-      </div>    
+      </div>
 
 @endsection

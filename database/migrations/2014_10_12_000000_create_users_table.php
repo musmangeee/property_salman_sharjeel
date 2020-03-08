@@ -43,6 +43,7 @@ class CreateUsersTable extends Migration
             $table->string('state')->nullable();
             $table->integer('count')->nullable();
             $table->string('area_town')->nullable();
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

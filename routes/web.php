@@ -11,9 +11,27 @@
 |
 */
 
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    return "Cache is cleared";
+});
+
 Route::get('/', 'User\PagesController@userIndex')->name('/');
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('all/users', 'Admin\UserManagementController@allUser')->name('all_user');
+    Route::post('users/inactivate', 'Admin\UserManagementController@InactivateUser')->name('inactivate_user');
+    Route::post('users/activate', 'Admin\UserManagementController@activateUser')->name('activate_user');
+
+    Route::get('all/property', 'Admin\UserManagementController@allProperties')->name('all_properties');
+    Route::post('property/inactivate', 'Admin\UserManagementController@InactivateProperty')->name('inactivate_property');
+    Route::post('property/activate', 'Admin\UserManagementController@activateProperty')->name('activate_property');
+});
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
 
